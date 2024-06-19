@@ -2,7 +2,7 @@ name: Fork auto sync
 
 on:
   schedule:
-    - cron: '* */8 * * *' # every 30 minutes
+    - cron: '0 10,22 * * *' # every 30 minutes
   workflow_dispatch: # on button click
 
 env:
