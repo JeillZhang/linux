@@ -2515,8 +2515,8 @@ config TEST_IDA
 	tristate "Perform selftest on IDA functions"
 
 config TEST_MISC_MINOR
-	tristate "miscdevice KUnit test" if !KUNIT_ALL_TESTS
-	depends on KUNIT
+	bool "miscdevice KUnit test" if !KUNIT_ALL_TESTS
+	depends on KUNIT=y
 	default KUNIT_ALL_TESTS
 	help
 	  Kunit test for miscdevice API, specially its behavior in respect to
@@ -2894,6 +2894,7 @@ config FORTIFY_KUNIT_TEST
 config LONGEST_SYM_KUNIT_TEST
 	tristate "Test the longest symbol possible" if !KUNIT_ALL_TESTS
 	depends on KUNIT && KPROBES
+	depends on !PREFIX_SYMBOLS && !CFI_CLANG && !GCOV_KERNEL
 	default KUNIT_ALL_TESTS
 	help
 	  Tests the longest symbol possible
