@@ -1657,7 +1657,7 @@ config HAVE_SPARSE_SYSCALL_NR
 	  related optimizations for a given architecture.
 
 config ARCH_HAS_VDSO_ARCH_DATA
-	depends on GENERIC_VDSO_DATA_STORE
+	depends on HAVE_GENERIC_VDSO
 	bool
 
 config ARCH_HAS_VDSO_TIME_DATA
@@ -1777,6 +1777,10 @@ config ARCH_VMLINUX_NEEDS_RELOCS
 	  Whether the architecture needs vmlinux to be built with static
 	  relocations preserved. This is used by some architectures to
 	  construct bespoke relocation tables for KASLR.
+
+# Select if architecture uses the common generic TIF bits
+config HAVE_GENERIC_TIF_BITS
+       bool
 
 source "kernel/gcov/Kconfig"
 
